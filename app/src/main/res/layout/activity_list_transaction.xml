@@ -3,18 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_list_expense"
+    android:id="@+id/layout_list_transaction"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".activities.ListExpenseActivity">
+    tools:context=".activities.ListTransactionActivity">
 
     <!-- Título -->
     <TextView
         android:id="@+id/txtListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lista de Despesas"
+        android:text="Histórico"
         android:textColor="@color/text_color"
         android:textStyle="bold"
         android:textSize="22sp"
@@ -27,7 +27,7 @@
 
     <!-- Lista de despesas -->
     <ListView
-        android:id="@+id/listViewExpenses"
+        android:id="@+id/listViewTransactions"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:divider="@android:color/darker_gray"

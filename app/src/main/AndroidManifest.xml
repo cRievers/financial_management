@@ -20,9 +20,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.AddExpenseActivity" />
-        <activity android:name=".activities.ListExpenseActivity" />
-        <activity android:name=".activities.EditExpenseActivity" />
+        <activity android:name=".activities.AddTransactionActivity" />
+        <activity android:name=".activities.ListTransactionActivity" />
+        <activity android:name=".activities.EditTransactionActivity" />
 
     </application>
 

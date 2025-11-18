@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.controledegastos.R
-import com.example.controledegastos.persistence.ExpenseDAO
+import com.example.controledegastos.persistence.TransactionDAO
 import com.example.controledegastos.exports.CSVExporter
 import java.io.IOException
 
@@ -16,31 +16,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnAddExpense = findViewById<Button>(R.id.btnAddExpense)
-        val btnListExpense = findViewById<Button>(R.id.btnListExpense)
-        val btnExportCSV = findViewById<Button>(R.id.btnExportCSV) // Novo botão
+        val btnListTransactions = findViewById<Button>(R.id.btnListTransactions)
+        val btnExportCSV = findViewById<Button>(R.id.btnExportCSV)
+        val fabAddTransaction = findViewById<com.google.android.material.floatingactionbutton.FloatingActionButton>(R.id.fabAddTransaction)
 
-        btnAddExpense.setOnClickListener {
-            val intent = Intent(this, AddExpenseActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnListExpense.setOnClickListener {
-            val intent = Intent(this, ListExpenseActivity::class.java)
+        btnListTransactions.setOnClickListener {
+            val intent = Intent(this, ListTransactionActivity::class.java)
             startActivity(intent)
         }
 
         btnExportCSV.setOnClickListener {
             exportCSV()
         }
+
+        fabAddTransaction.setOnClickListener {
+            val intent = Intent(this, AddTransactionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun exportCSV() {
-        val dao = ExpenseDAO(this)
-        val expenses = dao.getAll() // Obtém todas as despesas do banco
+        val dao = TransactionDAO(this)
+        val expenses = dao.getAll() // Obtém todas as transações do banco
 
         if (expenses.isEmpty()) {
-            Toast.makeText(this, "Nenhuma despesa para exportar!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Nada para exportar!", Toast.LENGTH_SHORT).show()
             return
         }
 
