@@ -8,13 +8,13 @@ import android.widget.Toast
 import com.example.controledegastos.R
 import com.example.controledegastos.controllers.ExpenseController
 
-class AddExpenseActivity : AppCompatActivity() {
+class AddIncomeActivity : AppCompatActivity() {
 
     private lateinit var controller: ExpenseController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_expense)
+        setContentView(R.layout.activity_add_income)
 
         controller = ExpenseController(this)
 
@@ -36,10 +36,10 @@ class AddExpenseActivity : AppCompatActivity() {
                 amount = amount,
                 category = category,
                 date = date,
-                type = "expense"
+                type = "income"
             )
 
-            Toast.makeText(this, "Despesa adicionada com sucesso!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Receita adicionada com sucesso!", Toast.LENGTH_SHORT).show()
             finish()
 
         }

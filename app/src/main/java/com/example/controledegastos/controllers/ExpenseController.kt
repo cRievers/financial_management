@@ -8,8 +8,13 @@ class ExpenseController(context: Context) {
 
     private val expenseDAO = ExpenseDAO(context)
 
-    fun addExpense(description: String, amount: Double, category: String, date: Long): Long {
-        // Exemplo de validações
+    fun addExpense(
+        description: String,
+        amount: Double,
+        category: String,
+        date: Long,
+        type: String
+    ): Long {
         require(description.isNotEmpty()) { "Descrição não pode ser vazia." }
         require(amount >= 0) { "Valor não pode ser negativo." }
 
@@ -18,10 +23,13 @@ class ExpenseController(context: Context) {
             description = description,
             amount = amount,
             category = category,
-            date = date
+            date = date,
+            type = type
         )
+
         return expenseDAO.insert(expense)
     }
+
 
     fun listExpenses(): List<Expense> {
         return expenseDAO.getAll()

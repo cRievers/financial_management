@@ -17,8 +17,9 @@ class ExpenseDAO(context: Context) {
             put(DatabaseHelper.COLUMN_AMOUNT, expense.amount)
             put(DatabaseHelper.COLUMN_CATEGORY, expense.category)
             put(DatabaseHelper.COLUMN_DATE, expense.date)
+            put(DatabaseHelper.COLUMN_TYPE, expense.type) // "expense" ou "income"
         }
-        val id = db.insert(DatabaseHelper.TABLE_EXPENSE, null, values)
+        val id = db.insert(DatabaseHelper.TABLE_TRANSACTION, null, values)
         db.close()
         return id
     }
@@ -28,7 +29,7 @@ class ExpenseDAO(context: Context) {
         val db: SQLiteDatabase = helper.readableDatabase
 
         val cursor: Cursor? = db.query(
-            DatabaseHelper.TABLE_EXPENSE,
+            DatabaseHelper.TABLE_TRANSACTION,
             null, null, null, null, null, null
         )
 
@@ -40,13 +41,15 @@ class ExpenseDAO(context: Context) {
                     val amount = it.getDouble(it.getColumnIndexOrThrow(DatabaseHelper.COLUMN_AMOUNT))
                     val category = it.getString(it.getColumnIndexOrThrow(DatabaseHelper.COLUMN_CATEGORY))
                     val date = it.getLong(it.getColumnIndexOrThrow(DatabaseHelper.COLUMN_DATE))
+                    val type = it.getString(it.getColumnIndexOrThrow(DatabaseHelper.COLUMN_TYPE))
 
                     val expense = Expense(
                         id = id,
                         description = description,
                         amount = amount,
                         category = category,
-                        date = date
+                        date = date,
+                        type = type
                     )
                     list.add(expense)
                 } while (it.moveToNext())
@@ -64,13 +67,14 @@ class ExpenseDAO(context: Context) {
             put(DatabaseHelper.COLUMN_AMOUNT, expense.amount)
             put(DatabaseHelper.COLUMN_CATEGORY, expense.category)
             put(DatabaseHelper.COLUMN_DATE, expense.date)
+            put(DatabaseHelper.COLUMN_TYPE, expense.type)
         }
 
         val selection = "${DatabaseHelper.COLUMN_ID} = ?"
         val selectionArgs = arrayOf(expense.id.toString())
 
         val rowsAffected = db.update(
-            DatabaseHelper.TABLE_EXPENSE,
+            DatabaseHelper.TABLE_TRANSACTION,
             values,
             selection,
             selectionArgs
@@ -85,7 +89,7 @@ class ExpenseDAO(context: Context) {
         val selectionArgs = arrayOf(id.toString())
 
         val rowsDeleted = db.delete(
-            DatabaseHelper.TABLE_EXPENSE,
+            DatabaseHelper.TABLE_TRANSACTION,
             selection,
             selectionArgs
         )

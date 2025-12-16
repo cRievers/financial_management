@@ -5,6 +5,7 @@ data class Expense(
     var description: String,
     var amount: Double,
     var category: String,
-    var date: Long
+    var date: Long,
+    var type: String
 )
 
