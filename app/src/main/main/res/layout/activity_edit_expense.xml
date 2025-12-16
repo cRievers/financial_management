@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_edit_expense"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".activities.EditExpenseActivity">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/txtEditTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar Despesa"
+        android:textColor="@color/text_color"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"/>
+
+    <!-- Campo de Descrição -->
+    <EditText
+        android:id="@+id/edtDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Descrição"
+        android:textColorHint="@color/edittext_hint_color"
+        android:textColor="@color/edittext_text_color"
+        android:background="@color/edittext_background"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/txtEditTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        android:padding="12dp"/>
+
+    <!-- Campo de Valor -->
+    <EditText
+        android:id="@+id/edtAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Valor (Ex: 123.45)"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/edittext_hint_color"
+        android:textColor="@color/edittext_text_color"
+        android:background="@color/edittext_background"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/edtDescription"
+        app:layout_constraintStart_toStartOf="@id/edtDescription"
+        app:layout_constraintEnd_toEndOf="@id/edtDescription"
+        android:padding="12dp"/>
+
+    <!-- Campo de Categoria -->
+    <EditText
+        android:id="@+id/edtCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Categoria (Ex: Alimentação)"
+        android:textColorHint="@color/edittext_hint_color"
+        android:textColor="@color/edittext_text_color"
+        android:background="@color/edittext_background"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/edtAmount"
+        app:layout_constraintStart_toStartOf="@id/edtAmount"
+        app:layout_constraintEnd_toEndOf="@id/edtAmount"
+        android:padding="12dp"/>
+
+    <!-- Botão Atualizar -->
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Atualizar"
+        android:textColor="@color/button_text_color"
+        android:background="@color/button_background"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/edtCategory"
+        app:layout_constraintStart_toStartOf="@id/edtCategory"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:padding="12dp"/>
+
+    <!-- Botão Excluir -->
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Excluir"
+        android:textColor="@color/button_text_color"
+        android:background="@color/button_background"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="@id/btnUpdate"
+        app:layout_constraintStart_toEndOf="@id/btnUpdate"
+        android:padding="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
